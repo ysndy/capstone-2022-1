@@ -1,0 +1,85 @@
+h1 {
+    font-size: 45px;
+    float: left;
+}
+.header .redtext {
+    color: red;
+    font-size: 60px;
+}
+.top{
+    display: flex;
+    flex-direction: row;
+}
+.logo{
+    height: auto;
+    padding-left: 30px;
+    margin: 5px;
+    width: 60%;
+}
+.sub_header1{
+    cursor: pointer;
+}
+.sub_header1, .sub_header2{
+    margin-left: 30px;
+    margin-top: 63px;
+    text-align: start;
+    font-size: 30px;
+}
+.redtext{
+    color: red;
+}
+.white{
+    width: 40%;
+}
+.btn_next_page{
+    cursor: pointer;
+    margin-top: 50px;
+    margin-left: 100px;
+    margin-right: 20px;
+    height: 65px;
+    width: 200px;
+    border-color: red;
+    border-radius: 8px;
+    border-style: none;
+    background-color: red;
+}
+.btn_next{
+    font-style: none;
+    font-size: 40px;
+    font-weight: 900;
+    color: white;
+}
+.dropbox{
+    text-align: center;
+    height: 750px;
+    margin-left: 30px;
+    margin-right: 30px;
+    border-width: 5px;
+    border-style: dashed;
+    border-color: rgb(255, 212, 217);
+    background-color: rgb(255, 255, 255);
+}
+p{
+    margin-top: 300px;
+    margin-bottom: 20px;
+    font-size: 40px;
+}
+p>span{
+    font-weight: bolder;
+    font-size: 30px;
+}
+.file_upload_btn{
+    cursor: pointer;
+    height: 65px;
+    width: 240px;
+    border-color: red;
+    border-radius: 8px;
+    border-style: none;
+    background-color: red;
+}
+.btn_next{
+    font-style: none;
+    font-size: 40px;
+    font-weight: 900;
+    color: white;
+}

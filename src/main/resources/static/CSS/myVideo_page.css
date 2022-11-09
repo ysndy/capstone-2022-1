@@ -1,0 +1,138 @@
+h1 {
+    font-size: 45px;
+    float: left;
+}
+.header .redtext {
+    color: red;
+    font-size: 60px;
+}
+.top{
+    display: flex;
+    flex-direction: row;
+}
+.logo{
+    height: auto;
+    width: 20%;
+    padding-left: 30px;
+    margin: 5px;
+    width: 50%;
+}
+.sub_header{
+    margin-left: 30px;
+    margin-top: 63px;
+    text-align: start;
+    font-size: 30px;
+}
+.sub_header .redtext{
+    color: red;
+}
+.white{
+    width: 50%;
+}
+.check_pw{
+    cursor: pointer;
+    margin-top: 50px;
+    margin-left: 100px;
+    margin-right: 20px;
+    height: 65px;
+    width: 240px;
+    border-color: red;
+    border-radius: 8px;
+    border-style: none;
+    background-color: red;
+}
+.btn_next{
+    font-style: none;
+    font-size: 40px;
+    font-weight: 900;
+    color: white;
+}
+.container {
+    display: flex;  
+    gap: 20px 2%;  
+    flex-wrap: wrap;
+} 
+.container {  
+    justify-content:first baseline;
+    position: relative;  
+    border-radius: 20px;
+    border-style: solid;
+    border-width: 4px;
+    border-color: red;
+    margin: 0px auto;  
+    padding: 80px 40px 40px 40px;  
+    max-width: 90%;  
+    background-color: rgba(245, 158, 191, 0.185);
+} 
+li{
+    list-style: none;
+}
+.item{  
+    position:relative;
+    height: 280px;
+    width: 190px;
+    border-radius: 20px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: red;
+    line-height: 150px;  
+    margin: 30px 30px 30px 30px;  
+    background-color: rgb(255, 255, 255);
+} 
+.item > .del_btn{
+    position:absolute; 
+}
+.add_item{
+    height: 280px;
+    width: 180px;
+    border-radius: 20px;
+    border-style:dashed;
+    border-width: 4px;
+    border-color: red;
+    line-height: 150px;  
+    margin: 30px 30px 30px 30px;  
+    background-color: rgb(255, 255, 255);
+}
+.del_btn{
+    width: 50%;
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+.del_btn > i{
+    font-size: 30px;
+    color: rgba(100, 100, 100, 0.2);
+}
+.del_btn > i:hover{
+    color: rgb(0, 0, 0);
+}
+.btn {
+    margin-top: 32%;
+    background-color: rgb(255, 255, 255);
+    border: none;
+    padding: 30px 30px;
+    font-size: 80px;
+    cursor: pointer;
+}
+.btn > i{
+    color: rgb(255, 158, 211);
+}
+.btn > i:hover{
+    color: rgb(247, 71, 94);
+}
+.container::before {  
+    content: '<Video List>';  
+    font-size: 40px;
+    position: absolute;  
+    padding-top: 10px;  
+    width: 100%;  
+    text-align: center;  
+    top: 0px;  
+    left: 0px;
+} 
+* {  
+    color: rgb(0, 0, 0);  
+    font-weight: bold;  
+    text-align: center;  
+    overflow-wrap: break-word;
+}

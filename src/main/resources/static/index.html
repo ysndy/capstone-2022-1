@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8">
+    <title>Oneshorts : 소개</title>
+    <link rel="shortcut icon" href="../../../../../../../OneDrive%20-%20중앙대학교/3학년/2학기/캡스톤디자인/capstone/capstone/images/head_image.ico" type="images/x-icon">
+    <link href="css/intro_page.css" rel="stylesheet">
+    <style>
+      body{
+        position:relative;
+        z-index:1;
+      }
+      body::before{
+        position:absolute;
+        content:'';
+        z-index:-1;
+        background:url('../../../../../../../OneDrive - 중앙대학교/3학년/2학기/캡스톤디자인/capstone/capstone/images/background.png')no-repeat;
+        opacity:0.5!important;
+        top:0;
+        background-size:cover;
+        width:100%; 
+        height:105%; 
+      }
+    </style>
+  </head>
+  
+  <body>
+    <div class="top">
+      <div class="logo">
+        <header class="header" role="banner">
+          <h1><span class="redtext">O</span>ne Shorts</h1>
+        </header>
+      </div>
+      <div class="btn_login_wrap">
+        <button type="submit" class="btn_login" onClick="location.href='login_page.html'">
+          <span class="btn_next">Login page</span>
+        </button>
+      </div>
+    </div>
+    <div id="slideShow">
+      <ul class="slides">
+        <li><img src="../../../../../../../OneDrive%20-%20중앙대학교/3학년/2학기/캡스톤디자인/capstone/capstone/images/intro1.png" alt=""></li>
+        <li><img src="../../../../../../../OneDrive%20-%20중앙대학교/3학년/2학기/캡스톤디자인/capstone/capstone/images/intro2.png" alt=""></li>
+        <li><img src="../../../../../../../OneDrive%20-%20중앙대학교/3학년/2학기/캡스톤디자인/capstone/capstone/images/intro3.png" alt=""></li>
+      </ul>  
+      <p class="controller">
+        <span class="prev">&lang;</span>  
+        <span class="next">&rang;</span>
+      </p>
+    </div>
+    <script src="../../../../../../../OneDrive%20-%20중앙대학교/3학년/2학기/캡스톤디자인/capstone/capstone/js/intro_page.js"></script>
+  </body>
+</html>
