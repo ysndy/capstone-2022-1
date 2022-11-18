@@ -70,6 +70,8 @@ public class UploadVideo {
             // Authorize the request.
             Credential credential = Auth.authorize(scopes, "uploadvideo");
 
+
+
             // This object is used to make YouTube Data API requests.
             youtube = new YouTube.Builder(Auth.HTTP_TRANSPORT, Auth.JSON_FACTORY, credential).setApplicationName("oneshorts").build();
 
@@ -92,9 +94,12 @@ public class UploadVideo {
             // multiple files. You should remove this code from your project
             // and use your own standard names instead.
             Calendar cal = Calendar.getInstance();
-            snippet.setTitle("#shorts Test Upload via Java on " + cal.getTime());
+
+            //제목
+            snippet.setTitle("Test Upload via Java on " + cal.getTime());
+            //상세설명
             snippet.setDescription(
-                    "Video uploaded via YouTube Data API V3 using the Java library " + "on " + cal.getTime());
+                    "#shorts\nVideo uploaded via YouTube Data API V3 using the Java library " + "on " + cal.getTime());
 
             // Set the keyword tags that you want to associate with the video.
             List<String> tags = new ArrayList<String>();
