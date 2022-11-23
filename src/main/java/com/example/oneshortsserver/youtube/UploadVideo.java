@@ -12,7 +12,7 @@
  * the License.
  */
 
-package youtube;
+package com.example.oneshortsserver.youtube;
 
 import com.google.api.client.auth.oauth2.Credential;
 import com.google.api.client.googleapis.json.GoogleJsonResponseException;
@@ -59,7 +59,8 @@ public class UploadVideo {
      * 2.0 to authorize the API request.
      *
      */
-    public UploadVideo() {
+
+    public UploadVideo(String title, String detail) {
 
         // This OAuth 2.0 access scope allows an application to upload files
         // to the authenticated user's YouTube channel, but doesn't allow
@@ -96,10 +97,9 @@ public class UploadVideo {
             Calendar cal = Calendar.getInstance();
 
             //제목
-            snippet.setTitle("Test Upload via Java on " + cal.getTime());
+            snippet.setTitle(title);
             //상세설명
-            snippet.setDescription(
-                    "#shorts\nVideo uploaded via YouTube Data API V3 using the Java library " + "on " + cal.getTime());
+            snippet.setDescription("#shorts\n"+detail);
 
             // Set the keyword tags that you want to associate with the video.
             List<String> tags = new ArrayList<String>();

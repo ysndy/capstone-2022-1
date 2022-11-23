@@ -1,4 +1,4 @@
-package youtube;
+package com.example.oneshortsserver.youtube;
 
 import com.google.api.client.auth.oauth2.Credential;
 import com.google.api.client.auth.oauth2.StoredCredential;
