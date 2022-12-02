@@ -29,6 +29,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Upload a video to the authenticated user's channel. Use OAuth 2.0 to
@@ -51,7 +52,10 @@ public class UploadVideo {
      */
     private static final String VIDEO_FILE_FORMAT = "video/*";
 
-    private static final String SAMPLE_VIDEO_FILENAME = "sample-video.mp4";
+    private String videoId;
+    public String getVideoId(){
+        return videoId;
+    }
 
     /**
      * Upload the user-selected video to the user's YouTube channel. The code
@@ -60,7 +64,7 @@ public class UploadVideo {
      *
      */
 
-    public UploadVideo(String title, String detail) {
+    public UploadVideo(String title, String detail, String videoName) {
 
         // This OAuth 2.0 access scope allows an application to upload files
         // to the authenticated user's YouTube channel, but doesn't allow
@@ -76,7 +80,7 @@ public class UploadVideo {
             // This object is used to make YouTube Data API requests.
             youtube = new YouTube.Builder(Auth.HTTP_TRANSPORT, Auth.JSON_FACTORY, credential).setApplicationName("oneshorts").build();
 
-            System.out.println("Uploading: " + SAMPLE_VIDEO_FILENAME);
+            System.out.println("Uploading: " + videoName);
 
             // Add extra information to the video before uploading.
             Video videoObjectDefiningMetadata = new Video();
@@ -113,8 +117,7 @@ public class UploadVideo {
             // Add the completed snippet object to the video resource.
             videoObjectDefiningMetadata.setSnippet(snippet);
 
-            InputStreamContent mediaContent = new InputStreamContent(VIDEO_FILE_FORMAT,
-                    UploadVideo.class.getResourceAsStream("/sample-video.mp4"));
+            InputStreamContent mediaContent = new InputStreamContent(VIDEO_FILE_FORMAT, UploadVideo.class.getResourceAsStream("/" + videoName));
 
             // Insert the video. The command sends three arguments. The first
             // specifies which information the API request is setting and which
@@ -151,7 +154,7 @@ public class UploadVideo {
                             break;
                         case MEDIA_IN_PROGRESS:
                             System.out.println("Upload in progress");
-                            System.out.println("Upload percentage: " + uploader.getProgress());
+                            System.out.println("Upload percentage: " + uploader.getNumBytesUploaded());
                             break;
                         case MEDIA_COMPLETE:
                             System.out.println("Upload Completed!");
@@ -174,6 +177,7 @@ public class UploadVideo {
             System.out.println("  - Tags: " + returnedVideo.getSnippet().getTags());
             System.out.println("  - Privacy Status: " + returnedVideo.getStatus().getPrivacyStatus());
             System.out.println("  - Video Count: " + returnedVideo.getStatistics().getViewCount());
+            videoId = returnedVideo.getId();
 
         } catch (GoogleJsonResponseException e) {
             System.err.println("GoogleJsonResponseException code: " + e.getDetails().getCode() + " : "

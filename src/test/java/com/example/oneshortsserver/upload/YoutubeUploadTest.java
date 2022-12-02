@@ -9,7 +9,7 @@ public class YoutubeUploadTest {
 
     @Test
     public void upload(){
-        new UploadVideo("test", "test");
+        //new UploadVideo("test", "test", "sample-video.mp4");
     }
 
 }
