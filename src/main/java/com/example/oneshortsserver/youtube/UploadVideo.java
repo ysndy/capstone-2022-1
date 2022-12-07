@@ -26,6 +26,7 @@ import com.google.api.services.youtube.model.VideoStatus;
 import com.google.common.collect.Lists;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -64,7 +65,7 @@ public class UploadVideo {
      *
      */
 
-    public UploadVideo(String title, String detail, String videoName) {
+    public UploadVideo(String title, String detail, InputStream inputStream) {
 
         // This OAuth 2.0 access scope allows an application to upload files
         // to the authenticated user's YouTube channel, but doesn't allow
@@ -80,7 +81,7 @@ public class UploadVideo {
             // This object is used to make YouTube Data API requests.
             youtube = new YouTube.Builder(Auth.HTTP_TRANSPORT, Auth.JSON_FACTORY, credential).setApplicationName("oneshorts").build();
 
-            System.out.println("Uploading: " + videoName);
+            System.out.println("Uploading: ");
 
             // Add extra information to the video before uploading.
             Video videoObjectDefiningMetadata = new Video();
@@ -117,7 +118,7 @@ public class UploadVideo {
             // Add the completed snippet object to the video resource.
             videoObjectDefiningMetadata.setSnippet(snippet);
 
-            InputStreamContent mediaContent = new InputStreamContent(VIDEO_FILE_FORMAT, UploadVideo.class.getResourceAsStream("/" + videoName));
+            InputStreamContent mediaContent = new InputStreamContent(VIDEO_FILE_FORMAT, inputStream);
 
             // Insert the video. The command sends three arguments. The first
             // specifies which information the API request is setting and which

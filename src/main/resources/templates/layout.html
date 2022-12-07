@@ -30,6 +30,7 @@
 
   /* start uploading files */
   function startUploading() {
+    console.log("asdasd");
     var files = document.getElementById('files').files;
     if (files.length == 0) {
       alert("Please choose at least one file and try.");
@@ -38,6 +39,7 @@
     fileUploadCount = 0;
     successCount = 0;
     prepareProgressBarUI(files);
+    console.log("asdasd2");
 
     // upload through ajax call
     uploadFile();
@@ -56,7 +58,6 @@
               + '<div class="progress"><div class="progress-bar progress-bar-striped active" style="width:0%"></div></div><div class="error-msg text-danger"></div></td>'
               + '<td  style="width:25%"><span class="size-loaded"></span> ' + fsize + ' <span class="percent-loaded"></span></td></tr>';
       $tbody.append(bar);
-      document.getElementById("videoName").setAttribute("value", fname);
     }
     $("#upload-status-container").show();
   }
@@ -83,10 +84,14 @@
   /* one by one file will be uploaded to the server by ajax call*/
   function uploadFile() {
     var file = document.getElementById('files').files[fileUploadCount];
+    var title = document.getElementById('title').value;
+    var detail = document.getElementById('detail').value;
     fileSize = file.size;
     var xhr = new XMLHttpRequest();
     var fd = new FormData();
     fd.append("multipartFile", file);
+    fd.append("title", title);
+    fd.append("detail", detail);
     xhr.upload.addEventListener("progress", onUploadProgress, false);
     xhr.addEventListener("load", onUploadComplete, false);
     xhr.addEventListener("error", onUploadError, false);

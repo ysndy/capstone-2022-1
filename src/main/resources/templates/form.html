@@ -1,0 +1,30 @@
+<html layout:decorate="~{/layout}">
+<div layout:fragment="content" class="container my-3">
+
+    <div id="main-container">
+        <hr>
+        <div style="margin-bottom: 20px">
+
+            <input type="file" id="files" multiple style="margin-bottom: 20px"/>
+            <input type="text" id="title"/>
+            <input type="text" id="detail"/>
+            <button class="btn btn-primary" type="button" onclick="startUploading()"><i class="fa fa-upload"></i> Upload
+                file
+            </button>
+        </div>
+        <div id="upload-status-container">
+            <div id="upload-header">
+                <span id="upload-header-text"></span>
+                <i class="action-icon fa fa-window-minimize pull-right" onclick="showHide(this)" title="minimize"></i>
+            </div>
+            <div id="progress-bar-container">
+                <table class="table">
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</html>

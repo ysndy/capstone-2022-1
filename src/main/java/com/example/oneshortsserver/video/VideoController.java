@@ -38,9 +38,7 @@ public class VideoController {
 
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         UserDetails userDetails = (UserDetails)principal;
-        System.out.println(userDetails.getUsername());
-
-        videoService.upload(videoCreateForm.getTitle(), videoCreateForm.getDetail(), userDetails.getUsername(), videoCreateForm.getVideoName());
+        //videoService.upload(videoCreateForm.getTitle(), videoCreateForm.getDetail(), userDetails.getUsername(), videoCreateForm.getVideoName());
 
         return "redirect:/";
 

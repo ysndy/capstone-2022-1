@@ -1,0 +1,13 @@
+<html layout:decorate="~{layout}">
+<div layout:fragment="content" class="container my-3">
+    <table>
+        <tbody>
+        <tr th:each="video : ${videoList}">
+            <td>
+                <img th:src="@{https://i.ytimg.com/vi/}+${video.videoId+'/hq720.jpg'}"/>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</html>
