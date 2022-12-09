@@ -1,0 +1,16 @@
+<html layout:decorate="~{/layout}">
+<div layout:fragment="content" class="container my-3">
+
+    <div>
+        <h1> Facebook & instagram </h1>
+        <a th:if="${facebook}" disabled="disabled"> 등록완료 </a>
+        <button th:unless="${facebook}" href="https://www.facebook.com/dialog/oauth?app_id=5933675523361973&scope=pages_read_engagement%2Cpages_show_list%2Cinstagram_basic%2Cinstagram_content_publish%2Cpages_manage_posts&client_id=5933675523361973&redirect_uri=https://43.201.131.44:8443/facebook/regist&response_type=code"> 등록하기 </button>
+    </div>
+    <div>
+        <h1> Youtube </h1>
+        <a th:unless="${youtube}" href="https://accounts.google.com/o/oauth2/auth?client_id=566410170787-i5gvdf2r7ksdi8tkkpbmava3spl2brjq.apps.googleusercontent.com&redirect_uri=https://43.201.131.44:8443/regist/youtube&response_type=code&scope=https://www.googleapis.com/auth/youtube https://www.googleapis.com/auth/youtube.force-ssl https://www.googleapis.com/auth/youtube.upload https://www.googleapis.com/auth/youtube.readonly https://www.googleapis.com/auth/youtubepartner"> 등록하기 </a>
+        <button th:if="${youtube}" disabled="disabled"> 등록완료 </button>
+    </div>
+
+</div>
+</html>
