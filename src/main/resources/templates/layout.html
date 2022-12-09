@@ -86,12 +86,18 @@
     var file = document.getElementById('files').files[fileUploadCount];
     var title = document.getElementById('title').value;
     var detail = document.getElementById('detail').value;
+    var youtubeCheck = document.getElementById('youtubeCheckBox').checked;
+    var facebookCheck = document.getElementById('facebookCheckBox').checked;
+    var instaCheck = document.getElementById('instaCheckBox').checked;
     fileSize = file.size;
     var xhr = new XMLHttpRequest();
     var fd = new FormData();
     fd.append("multipartFile", file);
     fd.append("title", title);
     fd.append("detail", detail);
+    fd.append("youtubeCheck", youtubeCheck);
+    fd.append("facebookCheck", facebookCheck);
+    fd.append("instaCheck", instaCheck);
     xhr.upload.addEventListener("progress", onUploadProgress, false);
     xhr.addEventListener("load", onUploadComplete, false);
     xhr.addEventListener("error", onUploadError, false);

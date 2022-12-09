@@ -1,13 +1,33 @@
 <html layout:decorate="~{layout}">
 <div layout:fragment="content" class="container my-3">
-    <table>
-        <tbody>
-        <tr th:each="video : ${videoList}">
-            <td>
-                <img th:src="@{https://i.ytimg.com/vi/}+${video.videoId+'/hq720.jpg'}"/>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+
+    <main>
+
+        <div class="album py-5 bg-light">
+            <div class="container">
+
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                    <div class="col" th:each="video : ${youtubeVideoList}">
+                        <div class="card shadow-sm">
+                            <img th:src="${video.thumbnailUrl}"/>
+                            <div class="card-body">
+                                <p class="card-text">[[${video.detail}]]</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-sm btn-outline-secondary">[[${video.viewCount}]]</button>
+                                        <button type="button" class="btn btn-sm btn-outline-secondary">[[${video.likeCount}]]</button>
+                                        <button type="button" class="btn btn-sm btn-outline-secondary">[[${video.commentCount}]]</button>
+                                    </div>
+                                    <small class="text-muted">[[${video.date}]]</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
 </div>
 </html>

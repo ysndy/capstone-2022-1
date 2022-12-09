@@ -3,8 +3,6 @@ package com.example.oneshortsserver.config;
 import com.example.oneshortsserver.user.UserRole;
 import com.example.oneshortsserver.user.UserSecurityService;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.log4j.Log4j2;
-import org.apache.catalina.User;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -24,8 +22,10 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeRequests().antMatchers("/").permitAll()
-                    .antMatchers("/api/video/upload/youtube").hasRole(String.valueOf(UserRole.USER))
-                    .antMatchers("/api/video/list").hasRole(String.valueOf(UserRole.USER));
+                    .antMatchers("/fileupload").hasRole(String.valueOf(UserRole.USER))
+                    .antMatchers("/api/video/list").hasRole(String.valueOf(UserRole.USER))
+                        .antMatchers("/api/regist").hasRole(String.valueOf(UserRole.USER))
+                .antMatchers("/api/video/upload").hasRole(String.valueOf(UserRole.USER));
 
         http.formLogin().loginPage("/api/login");
         http.csrf().disable();

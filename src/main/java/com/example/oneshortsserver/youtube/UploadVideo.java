@@ -15,6 +15,7 @@
 package com.example.oneshortsserver.youtube;
 
 import com.google.api.client.auth.oauth2.Credential;
+import com.google.api.client.googleapis.auth.oauth2.GoogleCredential;
 import com.google.api.client.googleapis.json.GoogleJsonResponseException;
 import com.google.api.client.googleapis.media.MediaHttpUploader;
 import com.google.api.client.googleapis.media.MediaHttpUploaderProgressListener;
@@ -65,18 +66,14 @@ public class UploadVideo {
      *
      */
 
-    public UploadVideo(String title, String detail, InputStream inputStream) {
+    public UploadVideo(String title, String username, String detail, InputStream inputStream, String accessToken) {
 
         // This OAuth 2.0 access scope allows an application to upload files
         // to the authenticated user's YouTube channel, but doesn't allow
         // other types of access.
-        List<String> scopes = Lists.newArrayList("https://www.googleapis.com/auth/youtube.upload");
-
         try {
             // Authorize the request.
-            Credential credential = Auth.authorize(scopes, "uploadvideo");
-
-
+            Credential credential = new GoogleCredential().setAccessToken(accessToken);
 
             // This object is used to make YouTube Data API requests.
             youtube = new YouTube.Builder(Auth.HTTP_TRANSPORT, Auth.JSON_FACTORY, credential).setApplicationName("oneshorts").build();

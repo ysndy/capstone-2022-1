@@ -1,16 +1,32 @@
-<html layout:decorate="~{/layout}">
+<html layout:decorate="~{/layout}" xmlns="http://www.w3.org/1999/html">
 <div layout:fragment="content" class="container my-3">
 
     <div id="main-container">
-        <hr>
         <div style="margin-bottom: 20px">
 
-            <input type="file" id="files" multiple style="margin-bottom: 20px"/>
-            <input type="text" id="title"/>
-            <input type="text" id="detail"/>
-            <button class="btn btn-primary" type="button" onclick="startUploading()"><i class="fa fa-upload"></i> Upload
-                file
-            </button>
+            <div class="mb-3">
+                <label class="form-label">Title</label>
+                <input type="text" id="title" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Description</label>
+                <input type="text" id="detail" class="form-control">
+            </div>
+            <div class="mb-3">
+                <input type="file" id="files" multiple style="margin-bottom: 20px"/>
+            </div>
+            <div class="mb-5">
+                <label th:if="${youtube}"><input type="checkbox" id="youtubeCheckBox" value="1"> youtube upload</label>
+                <label th:if="${facebook}"><input type="checkbox" id="facebookCheckBox" value="1"> facebook
+                    upload</label>
+                <label th:if="${facebook}"><input type="checkbox" id="instaCheckBox" value="1"> instagram upload</label>
+            </div>
+            <div class="mb-5">
+                <button class="btn btn-primary" type="button" onclick="startUploading()"><i class="fa fa-upload"></i>
+                    Upload
+                    file
+                </button>
+            </div>
         </div>
         <div id="upload-status-container">
             <div id="upload-header">

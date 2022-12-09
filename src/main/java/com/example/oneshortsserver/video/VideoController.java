@@ -1,18 +1,21 @@
 package com.example.oneshortsserver.video;
 
+import com.example.oneshortsserver.facebook.FacebookRepository;
+import com.example.oneshortsserver.youtube.Auth;
+import com.example.oneshortsserver.youtube.MyUploads;
+import com.example.oneshortsserver.youtube.YoutubeService;
+import com.example.oneshortsserver.youtube.account.YoutubeAccountInfo;
+import com.example.oneshortsserver.youtube.account.YoutubeAccountRepository;
+import com.example.oneshortsserver.youtube.video.YoutubeVideoInfo;
+import com.google.common.collect.Lists;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
-import javax.validation.Valid;
-import java.io.File;
 import java.io.IOException;
-import java.nio.file.*;
 import java.util.List;
 
 
@@ -21,34 +24,39 @@ import java.util.List;
 @RequestMapping("/api/video")
 public class VideoController {
 
-    private final VideoService videoService;
-    private final VideoRepository videoRepository;
+    private final FacebookRepository facebookRepository;
+    private final YoutubeAccountRepository youtubeAccountRepository;
 
-    @GetMapping("/upload/youtube")
-    public String youtube(VideoCreateForm videoCreateForm){
-        return "form";
+    @GetMapping("/list")
+    public String list(Model model) throws IOException {
+
+        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        String userName = userDetails.getUsername();
+        YoutubeAccountInfo youtubeAccountInfo = youtubeAccountRepository.findYoutubeInfoByUsername(userName).get();
+        String accessToken = youtubeAccountInfo.getAccessToken();
+
+        List<YoutubeVideoInfo> youtubeVideoInfoList = MyUploads.getYoutubeVideoInfoList(accessToken);
+
+        model.addAttribute("youtubeVideoList", youtubeVideoInfoList);
+        return "video_list";
     }
 
-    @PostMapping("/upload/youtube")
-    public String youtube(@Valid VideoCreateForm videoCreateForm, BindingResult bindingResult) {
+    @GetMapping("/upload")
+    public String uploadForm(Model model){
 
-        if(bindingResult.hasErrors()){
-            return "upload_form"; //업로드 창
-        }
+        boolean isFacebookRegisted;
+        boolean isYoutubeRegisted;
 
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         UserDetails userDetails = (UserDetails)principal;
-        //videoService.upload(videoCreateForm.getTitle(), videoCreateForm.getDetail(), userDetails.getUsername(), videoCreateForm.getVideoName());
 
-        return "redirect:/";
+        isFacebookRegisted = facebookRepository.findFacebookInfoByUsername(userDetails.getUsername()).isPresent();
+        isYoutubeRegisted = youtubeAccountRepository.findYoutubeInfoByUsername(userDetails.getUsername()).isPresent();
+        model.addAttribute("facebook", isFacebookRegisted);
+        model.addAttribute("youtube", isYoutubeRegisted);
 
-    }
-
-    @GetMapping("/list")
-    public String list(Model model){
-        List<SiteVideo> videoList = videoRepository.findAll();
-        model.addAttribute("videoList", videoList);
-        return "video_list";
+        return "form";
     }
 
 }
