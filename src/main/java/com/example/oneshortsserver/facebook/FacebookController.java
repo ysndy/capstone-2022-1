@@ -22,7 +22,7 @@ public class FacebookController {
 
     final String APP_ID = "5933675523361973";
     final String API_SECRET = "c0f7c06c728baf8ebbddad7a290e552b";
-    final String REDIRECT_URI = "https://43.201.131.44:8443/facebook/regist";
+    final String REDIRECT_URI = "https://43.201.131.44:8080/facebook/regist";
     final FacebookRepository facebookRepository;
 
 

@@ -26,7 +26,7 @@ public class YoutubeController {
 
     public static final String CLIENT_ID = "566410170787-i5gvdf2r7ksdi8tkkpbmava3spl2brjq.apps.googleusercontent.com";
     public static final String CLIENT_SECRET = "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";
-    private final String REDIRECT_URI = "https://43.201.131.44:8443/regist/youtube";
+    private final String REDIRECT_URI = "https://43.201.131.44:8080/regist/youtube";
     private final YoutubeAccountRepository youtubeAccountRepository;
 
     @GetMapping("/regist/youtube")

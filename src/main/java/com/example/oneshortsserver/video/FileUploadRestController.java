@@ -30,7 +30,7 @@ public class FileUploadRestController {
     /**
      * Location to save uploaded files on server
      */
-    private static String UPLOAD_PATH = "src/main/resources/static/sample2.mp4";
+    private static String UPLOAD_PATH = "src/main/resources/static/";
     private final VideoService videoService;
     private final FacebookRepository facebookRepository;
     /*
@@ -55,7 +55,7 @@ public class FileUploadRestController {
             ResponseEntity<String> result = null;
             JSONParser parser = null;
             JSONObject object = null;
-            final String videoURL = "https://43.201.131.44:8443/";
+            final String videoURL = "https://43.201.131.44:8080/";
 
             //유튜브 업로드
             if (isYoutube) {
